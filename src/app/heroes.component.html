@@ -1,0 +1,16 @@
+<!-- <hero-detail [hero]='selectedHero'></hero-detail> -->
+<div *ngIf="selectedHero">
+	<h2> {{ selectedHero.name | uppercase}} is my Hero</h2>
+	<button class='button' (click) = 'goToDetail()'> View Details</button>
+</div>
+<div>
+	<p> Add Hero</p>
+	<label> Hero Name</label>
+	<input #heroName />
+	<button class='button' (click)=' add(heroName.value); heroName.value=""'> Add</button>
+</div>
+<div>
+	<ul class='heroes'>
+		<li *ngFor=' let hero of heroes ' (click)=' onSelect(hero) ' [class.selected]=" hero === selectedHero"> <span class='badge'> {{hero.id}}</span> {{hero.name}} <button class='button warning delete' (click) = 'delete(hero); $event.stopPropagation()'> X</button></li>
+	</ul>
+</div>
